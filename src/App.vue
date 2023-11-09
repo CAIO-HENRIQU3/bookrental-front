@@ -28,7 +28,7 @@
       <v-toolbar-title class="sla"></v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="main-container">
       <router-view />
     </v-main>
   </v-app>

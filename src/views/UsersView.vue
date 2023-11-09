@@ -23,6 +23,7 @@
             </v-col>
             <v-col cols="5" sm="10" md="10" lg="10">
               <v-text-field
+              class="main-search"
                 v-model="search"
                 append-icon="mdi-magnify"
                 label="Pesquisar"
@@ -88,6 +89,14 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
+        <v-text-field
+          class="mobile-search"
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Pesquisar"
+          single-line
+          hide-details
+        ></v-text-field>
       </template>
       <template slot="item.actions" slot-scope="{ item }">
         <v-icon size="20px" color="#272727" class="mr-2" @click="showDialog(item)"
@@ -311,3 +320,17 @@ export default {
   },
 };
 </script>
+<style scoped>
+.mobile-search {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mobile-search {
+    display: block;
+    padding: 18px;
+  }
+  .main-search {
+    display: none;
+  }
+}
+</style>

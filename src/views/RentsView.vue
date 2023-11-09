@@ -23,6 +23,7 @@
             </v-col>
             <v-col cols="5" sm="10" md="10" lg="10">
               <v-text-field
+                class="main-search"
                 v-model="search"
                 append-icon="mdi-magnify"
                 label="Pesquisar"
@@ -107,6 +108,14 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
+        <v-text-field
+          class="mobile-search"
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Pesquisar"
+          single-line
+          hide-details
+        ></v-text-field>
       </template>
       <template slot="item.rentalDate" slot-scope="{ item }">
         {{ item.rentalDate | formateDate }}
@@ -202,6 +211,12 @@ export default {
     };
   },
   filters: {
+    truncateText(value, maxLength) {
+    if (value && value.length > maxLength) {
+      return value.substring(0, maxLength) + '...';
+    }
+    return value;
+  },
     formateDate: function (value) {
       if (value) {
         const date = new Date(value);
@@ -445,6 +460,9 @@ export default {
 };
 </script>
 <style scoped>
+.mobile-search {
+  display: none;
+}
 .chip-light {
   font-weight: bold;
   display: flex;
@@ -454,5 +472,14 @@ export default {
   height: 25px;
   width: 165px;
   padding: 0 13px;
+}
+@media screen and (max-width: 768px) {
+  .mobile-search {
+    display: block;
+    padding: 18px;
+  }
+  .main-search {
+    display: none;
+  }
 }
 </style>

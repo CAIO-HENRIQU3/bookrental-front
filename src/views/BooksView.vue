@@ -23,6 +23,7 @@
             </v-col>
             <v-col cols="5" sm="10" md="10" lg="10">
               <v-text-field
+              class="main-search"
                 v-model="search"
                 append-icon="mdi-magnify"
                 label="Pesquisar"
@@ -31,7 +32,83 @@
               ></v-text-field>
             </v-col>
           </v-row>
+          <v-dialog v-model="dialog" max-width="500px" persistent>
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">
+                  {{ editedItem.id ? "Editar Livro" : "Novo Livro" }}
+                </span>
+              </v-card-title>
+
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" sm="60" md="30">
+                      <v-text-field
+                        v-model="editedItem.name"
+                        label="Nome"
+                        :error-messages="fieldErrors.name"
+                        @input="clearFieldError('name')"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="60" md="30">
+                      <v-text-field
+                        v-model="editedItem.author"
+                        label="Autor"
+                        :error-messages="fieldErrors.author"
+                        @input="clearFieldError('author')"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="60" md="30">
+                      <v-autocomplete
+                        label="Editora"
+                        v-model="editedItem.publisherId"
+                        :items="publishers"
+                        item-text="name"
+                        item-value="id"
+                        :error-messages="fieldErrors.publisherId"
+                        @input="clearFieldError('publisherId')"
+                      ></v-autocomplete>
+                    </v-col>
+                    <v-col cols="12" sm="60" md="30">
+                      <v-text-field
+                        v-model="editedItem.releaseYear"
+                        label="Lançamento"
+                        :error-messages="fieldErrors.releaseYear"
+                        @input="clearFieldError('releaseYear')"
+                        type="number"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="60" md="30">
+                      <v-text-field
+                        v-model="editedItem.amount"
+                        label="Quantidade"
+                        :error-messages="fieldErrors.amount"
+                        @input="clearFieldError('amount')"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="#272727" text @click="close"
+                  >Cancelar</v-btn
+                >
+                <v-btn color="#272727" text @click="save">Salvar</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-toolbar>
+        <v-text-field
+          class="mobile-search"
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Pesquisar"
+          single-line
+          hide-details
+        ></v-text-field>
       </template>
       <template slot="item.actions" slot-scope="{ item }">
         <v-icon size="20px" color="#272727" class="mr-2" @click="showDialog(item)"
@@ -261,3 +338,17 @@ export default {
   },
 };
 </script>
+<style scoped>
+.mobile-search {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mobile-search {
+    display: block;
+    padding: 18px;
+  }
+  .main-search {
+    display: none;
+  }
+}
+</style>
