@@ -42,9 +42,9 @@ export default {
     items: [
       { title: "Dashboard", icon: "mdi-view-dashboard", to: "/" },
       { title: "Editoras", icon: "mdi-book-account", to: "/Editoras" },
-      { title: "Usuarios", icon: "mdi-account", to: "/Usuarios" },
+      { title: "Usuários", icon: "mdi-account", to: "/Usuarios" },
       { title: "Livros", icon: "mdi-book-open-blank-variant", to: "/Livros" },
-      { title: "Alugueis", icon: "mdi-book-clock", to: "/Alugueis" },
+      { title: "Aluguéis", icon: "mdi-book-clock", to: "/Alugueis" },
     ],
     right: null,
   }),
