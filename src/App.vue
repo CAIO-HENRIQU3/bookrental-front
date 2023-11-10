@@ -58,7 +58,7 @@ export default {
 
 <style>
 .gradientbackground{
-  background: linear-gradient(180deg, rgba(39,39,39,1) 80%, rgb(190, 190, 190) 100%)
+  background: linear-gradient(180deg, rgba(39,39,39,1) 100%, rgb(190, 190, 190) 100%)
 }
 .sla {
   color: white;
