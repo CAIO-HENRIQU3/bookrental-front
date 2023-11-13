@@ -3,7 +3,6 @@
     <v-data-table
       :headers="headers"
       :items="publishers"
-      sort-by=""
       class="elevation-1"
       :search="search"
       :footer-props="footerProps"

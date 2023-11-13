@@ -3,7 +3,6 @@
     <v-data-table
       :headers="headers"
       :items="filteredReturnedRentals"
-      sort-by=""
       class="elevation-1"
       :footer-props="footerProps"
       mobile-breakpoint="850"
